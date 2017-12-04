@@ -9,6 +9,11 @@ class Movie {
     public String plot() {
         return "No plot here";
     }
+
+    // Getter for the name field.
+    public String getName() {
+        return name;
+    }
 }
 
 // Create Movie Classes.
@@ -61,9 +66,41 @@ class Forgetable extends Movie {
     // No plot Method.
 }
 
+
 public class Main {
 
     public static void main(String[] args) {
+        for (int i = 1; i<11; i++) {
+            Movie movie = randomMovie();
+            System.out.println("Movie #" + i +
+                                " : " + movie.getName() + "\n" +
+                                // How Polymorphism works. Looking at object called Movie
+                                // has it got a plot method execute returns plot.
+                                "Plot: " + movie.plot() + "\n");
+        }
+    }
 
+    // Return a random movie.
+    public static Movie randomMovie() {
+        // Return Random Number.
+        int randomNumber = (int) (Math.random() * 5) + 1;
+        System.out.println("Random Number generated was: " + randomNumber);
+        switch (randomNumber) {
+            case 1:
+                return new Jaws();
+
+            case 2:
+                return new IndependanceDay();
+
+            case 3:
+                return new MazeRunner();
+
+            case 4:
+                return new StarWars();
+
+            case 5:
+                return new Forgetable();
+        }
+        return null;
     }
 }
